@@ -1,10 +1,10 @@
-# Spring Boot MVC with Thymeleaf
+# Spring Boot (3.2.2) MVC with Thymeleaf
 
 This project is a simple example of using Spring Boot with MVC and Thymeleaf for building web applications.
 
 ## Prerequisites
 
-- Java Development Kit (JDK) 8 or later
+- Java Development Kit (JDK) 17 or later
 - Maven or Gradle for dependency management (if using Maven, you can use the Maven Wrapper included in the project)
 
 ## Getting Started
