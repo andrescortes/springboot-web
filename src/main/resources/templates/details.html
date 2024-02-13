@@ -10,9 +10,10 @@
 <body>
     <h1 th:text="${user.getTitle()}"></h1>
     <ul>
-        <li th:text="${user.getUser().getName()}"></li>
-        <li th:text="${user.getUser().getLastname()}"></li>
-        <li th:text="${age}"></li>
+        <li th:text="${user.getName()}"></li>
+        <li th:text="${user.getLastname()}"></li>
+        <li th:if="${user.getEmail() == null}" th:text="${'Email not found'}"></li>
+        <li th:if="${user.getEmail()}" th:text="${user.getEmail()}"></li>
     </ul>
 </body>
 </html>

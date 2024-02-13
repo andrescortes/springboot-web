@@ -11,9 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class User {
-
-    private String name;
-    private String lastname;
-    private String email;
+public class ParamDto {
+    private String message;
+    private int code;
 }

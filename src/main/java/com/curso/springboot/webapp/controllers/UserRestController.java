@@ -1,10 +1,13 @@
 package com.curso.springboot.webapp.controllers;
 
+import com.curso.springboot.webapp.models.ParamDto;
 import com.curso.springboot.webapp.models.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +40,14 @@ public class UserRestController {
                 .name("john2")
                 .lastname("doe2")
                 .build();
-        return List.of(user, user2);
+        return Arrays.asList(user, user2);
+    }
+
+    @GetMapping("/params")
+    public ParamDto params(HttpServletRequest request) {
+        ParamDto dto = new ParamDto();
+        dto.setMessage(request.getParameter("message"));
+        dto.setCode(Integer.parseInt(request.getParameter("code")));
+        return dto;
     }
 }
