@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,11 +45,18 @@ public class UserController {
                 .lastname("dom")
                 .email("c@c.com")
                 .build();
+        User user3 = User.builder()
+                .name("john")
+                .lastname("doe")
+                .email("j@j.com")
+                .build();
         UserDto dto = userTransformer.toDto(user, "User 1");
         UserDto dto2 = userTransformer.toDto(user2, "User 2");
+        UserDto dto3 = userTransformer.toDto(user3, "User 3");
 
         users.add(dto);
         users.add(dto2);
+        users.add(dto3);
         model.addAttribute("users", users);
         return "users";
     }
