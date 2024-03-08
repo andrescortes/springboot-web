@@ -1,37 +1,16 @@
 package com.curso.springboot.webapp.services;
 
 import com.curso.springboot.webapp.models.Product;
-import com.curso.springboot.webapp.repositories.ProductRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class ProductService {
+public interface ProductService {
 
-    private final ProductRepository productRepository = new ProductRepository();
+    Product findById(Long id);
 
-    public Product findById(Long id) {
-        return productRepository.findById(id);
-    }
+    List<Product> findAll();
 
-    public List<Product> findAll() {
-        return productRepository
-                .findAll()
-                .stream()
-                .map(product -> {
-                    double priceTax = product.getPrice() * 1.25d;
-                    Product cloned = product.clone();
-                    cloned.setPrice(Math.round(priceTax));
-                    return cloned;
-                })
-                .collect(Collectors.toList());
-    }
+    Product save(Product product);
 
-    public Product save(Product product) {
-        return productRepository.save(product);
-    }
-
-    public void deleteById(Long id) {
-        productRepository.deleteById(id);
-    }
+    void deleteById(Long id);
 }

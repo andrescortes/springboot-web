@@ -2,6 +2,8 @@ package com.curso.springboot.webapp.controllers;
 
 import com.curso.springboot.webapp.models.Product;
 import com.curso.springboot.webapp.services.ProductService;
+import com.curso.springboot.webapp.services.ProductServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +18,11 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    private final ProductService productService = new ProductService();
+    private final ProductService productService;
+
+    public ProductController(ProductServiceImpl productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public List<Product> getProducts() {
