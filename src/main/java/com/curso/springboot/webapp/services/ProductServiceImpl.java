@@ -3,6 +3,7 @@ package com.curso.springboot.webapp.services;
 import com.curso.springboot.webapp.models.Product;
 import com.curso.springboot.webapp.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,10 +11,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-
     private final ProductRepository repository;
 
-    public ProductServiceImpl(@Qualifier("productRepositoryImpl") ProductRepository repository) {
+    @Value("${config.price.tax}")
+    private Double tax;
+
+    public ProductServiceImpl(ProductRepository repository) {
         this.repository = repository;
     }
 
@@ -28,12 +31,10 @@ public class ProductServiceImpl implements ProductService {
                 .findAll()
                 .stream()
                 .map(product -> {
-                    double priceTax = product.getPrice() * 1.25d;
-//                    Product cloned = product.clone();
-//                    cloned.setPrice(Math.round(priceTax));
-//                    return cloned;
-                    product.setPrice(Math.round(priceTax));
-                    return product;
+                    double priceTax = product.getPrice() * tax;
+                    Product cloned = product.clone();
+                    cloned.setPrice(Math.round(priceTax));
+                    return cloned;
                 })
                 .collect(Collectors.toList());
     }

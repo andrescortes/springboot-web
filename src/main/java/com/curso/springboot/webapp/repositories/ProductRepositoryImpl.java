@@ -2,14 +2,13 @@ package com.curso.springboot.webapp.repositories;
 
 import com.curso.springboot.webapp.models.Product;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Repository
 //@RequestScope
-@SessionScope
+//@SessionScope
 public class ProductRepositoryImpl implements ProductRepository {
 
     private final List<Product> database;

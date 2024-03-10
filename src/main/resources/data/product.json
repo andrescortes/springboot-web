@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Iphone X",
+    "description": "Amazing phone to buy without a credit card",
+    "price": 500.50
+  },
+  {
+    "id": 2,
+    "name": "Iphone XI",
+    "description": "A new generation of smartphones coming",
+    "price": 600.60
+  },
+  {
+    "id": 3,
+    "name": "Iphone XII",
+    "description": "The last generation of smartphones",
+    "price": 700.70
+  }
+]
